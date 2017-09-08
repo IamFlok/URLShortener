@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 Flok's API: URL Shortener
+  p Pass a URL as a parameter and receive a shortened URL in the JSON response
+  h2 Example creation Usage
+  code localhost:3000/new/www.google.com
+  br
+  h2 Expected creation outcome
+  code {'original_url': "www.google.com", "short_url": "localhost:3000/1234"}
+  h2 Usage
+  code localhost:3000/1234
+  p will redirect to:
+  code www.google.com
