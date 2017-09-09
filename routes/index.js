@@ -102,5 +102,28 @@ function updateToDatabase(obj) {
 };
 
 // TODO GET shorturl API function
+var url2 = '/:urlToRedirect';
+
+router.get(url2, (req, res, next) => {
+  var shortUrl = req.params.urlToRedirect;
+
+  mongo.connect(process.env.MONGODB_URI ||
+    'mongodb://fccuser:fCcUsER61@ds131384.mlab.com:31384/freecodecamp',
+    (err, db) => {
+     if (err) throw err;
+     var col = db.collection('shorturls');
+
+     col.findOne({'shortUrl': shortUrl}, (err, data) => {
+       if (err) throw err;
+       var regex = new RegExp("^(http|https)://", "i");
+       var strToCheck = data.originalUrl;
+       if (regex.test(strToCheck)) {
+         res.redirect(301, data.originalUrl);
+       } else {
+         res.redirect(301, 'http://' + data.originalUrl);
+       }
+     });
+   });
+});
 
 module.exports = router;
