@@ -102,7 +102,7 @@ function updateToDatabase(obj) {
 };
 
 // TODO GET shorturl API function
-var url2 = '/:urlToRedirect';
+var url2 = '/:urlToRedirect(*)';
 
 router.get(url2, (req, res, next) => {
   var shortUrl = req.params.urlToRedirect;
