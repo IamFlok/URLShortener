@@ -1,6 +1,8 @@
 {
   "name": "urlshortener",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "FCC's URL shortener microservice API project",
+  "author": "Ferenc Szel",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
